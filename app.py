@@ -236,12 +236,14 @@ for i, message in enumerate(st.session_state.messages):
             col1, col2, _ = st.columns([0.1, 0.1, 0.8])
             with col1:
                 if st.button("👍", key=f"up_{i}"):
-                    pass
+                    query = st.session_state.messages[i-1]["content"] if i > 0 else "Unknown"
+                    log_feedback(query, message["content"], "thumbs_up", message.get("latency", 0))
+                    st.toast("Positive feedback recorded!")
             with col2:
                 if st.button("👎", key=f"down_{i}"):
                     query = st.session_state.messages[i-1]["content"] if i > 0 else "Unknown"
                     log_feedback(query, message["content"], "thumbs_down", message.get("latency", 0))
-                    st.toast("Feedback recorded!")
+                    st.toast("Negative feedback recorded!")
 
 # Chat Input
 if prompt := st.chat_input("Ask a question about your documents..."):
