@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
+
+# Local Data & Logs
+chroma_db/
+temp_pdf_uploads/
+logs.json
+
+# OS specific
+.DS_Store
